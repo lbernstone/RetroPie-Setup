@@ -59,7 +59,7 @@ function build_retroarch() {
     # Temporarily block dispmanx support for fkms until upstream support is fixed
     isPlatform "dispmanx" && ! isPlatform "kms" && params+=(--enable-dispmanx)
     isPlatform "rpi" && isPlatform "mesa" && params+=(--disable-videocore)
-    isPlatform "mali" && params+=(--enable-mali_fbdev)
+    isPlatform "mali" && params+=(--enable-mali_fbdev --disable-kms)
     isPlatform "kms" && params+=(--enable-kms)
     isPlatform "arm" && params+=(--enable-floathard)
     isPlatform "neon" && params+=(--enable-neon)

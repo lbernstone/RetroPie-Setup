@@ -17,7 +17,7 @@ rp_module_flags=""
 
 function get_ver_sdl2() {
     if isPlatform "x11" || compareVersions "$__os_debian_ver" ge 10; then
-        echo "2.0.9"
+        echo "2.0.11"
     else
         echo "2.0.8"
     fi
@@ -59,7 +59,7 @@ function sources_sdl2() {
     isPlatform "kms" && branch="kms-$ver"
     isPlatform "vero4k" && branch="mali-$ver"
 
-    gitPullOrClone "$md_build/$pkg_ver" https://github.com/RetroPie/SDL-mirror.git "$branch"
+    gitPullOrClone "$md_build/$pkg_ver" https://github.com/lbernstone/SDL-mirror.git 
     cd "$pkg_ver"
     DEBEMAIL="Jools Wills <buzz@exotica.org.uk>" dch -v "$pkg_ver" "SDL $ver configured for the $__platform"
 }
