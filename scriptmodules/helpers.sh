@@ -986,7 +986,7 @@ function downloadAndExtract() {
             is_tar=0
             local tmp="$(mktemp -d)"
             local file="${url##*/}"
-            runCmd wget -q -O"$tmp/$file" "$url"
+            runCmd wget -q --no-check-certificate -O"$tmp/$file" "$url"
             runCmd unzip "${opts[@]}" -o "$tmp/$file" -d "$dest"
             rm -rf "$tmp"
             ret=$?
@@ -996,7 +996,7 @@ function downloadAndExtract() {
         mkdir -p "$dest"
         cmd+=(-C "$dest" "${opts[@]}")
 
-        runCmd "${cmd[@]}" < <(wget -q -O- "$url")
+        runCmd "${cmd[@]}" < <(wget -q --no-check-certificate -O- "$url")
         ret=$?
     fi
 
